@@ -277,12 +277,16 @@ rm -r d*
 ####         inside of `nice_dir_name` whose contents is the string
 ####         `A string in a file!`
 
-
+mkdir nice_dir_name
+echo "A string in a file" > nice_dir_name/nice_file_name
 
 #### Ex. 20: Catenate the contents of `nice_dir_name/nice_file_name` to _stdout_
 
+cat nice_dir_name/nice_file_name
 
+-------
 
+A string in a file
 
 #### Ex. 21: Create a directory called `bad directory name with spaces`, and then,
 ####         with redirection, create a file inside it, named 
