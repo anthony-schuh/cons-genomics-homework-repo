@@ -43,19 +43,67 @@ my name is Eric
 
 #### Ex. 3:  Now, for real print your name, as in Ex. 2, but put your name in there:
 
+echo "My name is Tony"
+
+--------
+
+My name is Tony
 
 
 #### Ex. 3: print the absolute path of the top level of the homework directory where this is
 
+ 
+cd /home/mobaxterm/Documents/0_MS_CSU/Classes/2022\,\ 1/BioInfo/Directory/cons-genomics-homework-repo/
+pwd 
+
+-------
+
+/home/mobaxterm/Documents/0_MS_CSU/Classes/2022, 1/BioInfo/Directory/cons-genomics-homework-repo
 
 
 #### Ex. 4: list, in long format, all the files and directories in this homework directory
 
 
+cd /home/mobaxterm/Documents/0_MS_CSU/Classes/2022\,\ 1/BioInfo/Directory/cons-genomics-homework-repo/
+ls -l
+
+-------
+
+total 20
+-rw-r--r--    1 schuh    UsersGrp       511 Jan 25 11:27 README.md
+drwxr-xr-x    1 schuh    UsersGrp         0 Jan 25 11:27 bam
+-rw-r--r--    1 schuh    UsersGrp       218 Jan 25 13:14 cons-genomics-homework-repo.Rproj
+-rw-r--r--    1 schuh    UsersGrp        99 Jan 25 11:27 count_files.sh
+drwxr-xr-x    1 schuh    UsersGrp         0 Jan 25 11:27 fastq
+drwxr-xr-x    1 schuh    UsersGrp         0 Jan 25 11:27 metadata
+drwxr-xr-x    1 schuh    UsersGrp         0 Jan 25 11:27 sam
+drwxr-xr-x    1 schuh    UsersGrp         0 Jan 25 11:27 silly
+-rw-r--r--    1 schuh    UsersGrp      9503 Jan 25 11:27 unix-intro-homework.sh
+
 
 #### Ex. 5: There is a directory called `.git` in here that didn't get listed. 
 ####        List everything again, but make sure `.git` is in the output
 
+ls -a -l
+
+--------
+
+total 20
+drwxr-xr-x    1 schuh    UsersGrp         0 Jan 25 13:14 .
+drwxr-xr-x    1 schuh    UsersGrp         0 Jan 25 11:27 ..
+-rw-r--r--    1 schuh    UsersGrp         0 Jan 25 12:16 .Rhistory
+drwxr-xr-x    1 schuh    UsersGrp         0 Jan 25 11:27 .Rproj.user
+drwxr-xr-x    1 schuh    UsersGrp         0 Jan 25 13:33 .git
+-rw-r--r--    1 schuh    UsersGrp       149 Jan 25 11:27 .gitignore
+-rw-r--r--    1 schuh    UsersGrp       511 Jan 25 11:27 README.md
+drwxr-xr-x    1 schuh    UsersGrp         0 Jan 25 11:27 bam
+-rw-r--r--    1 schuh    UsersGrp       218 Jan 25 13:14 cons-genomics-homework-repo.Rproj
+-rw-r--r--    1 schuh    UsersGrp        99 Jan 25 11:27 count_files.sh
+drwxr-xr-x    1 schuh    UsersGrp         0 Jan 25 11:27 fastq
+drwxr-xr-x    1 schuh    UsersGrp         0 Jan 25 11:27 metadata
+drwxr-xr-x    1 schuh    UsersGrp         0 Jan 25 11:27 sam
+drwxr-xr-x    1 schuh    UsersGrp         0 Jan 25 11:27 silly
+-rw-r--r--    1 schuh    UsersGrp      9503 Jan 25 11:27 unix-intro-homework.sh
 
 
 #### Ex. 6: What are the other hidden files/directories that show up
@@ -63,8 +111,35 @@ my name is Eric
 ####        to ge them, since you did that above)
 
 
+drwxr-xr-x    1 schuh    UsersGrp         0 Jan 25 13:14 .
+drwxr-xr-x    1 schuh    UsersGrp         0 Jan 25 11:27 ..
+-rw-r--r--    1 schuh    UsersGrp         0 Jan 25 12:16 .Rhistory
+drwxr-xr-x    1 schuh    UsersGrp         0 Jan 25 11:27 .Rproj.user
+drwxr-xr-x    1 schuh    UsersGrp         0 Jan 25 13:33 .git
+-rw-r--r--    1 schuh    UsersGrp       149 Jan 25 11:27 .gitignore
+
+
 
 #### Ex. 7: List (long format) the contents of the directory `.git`
+
+cd .git
+ls -l -a
+
+-------
+
+total 8
+drwxr-xr-x    1 schuh    UsersGrp         0 Jan 25 13:37 .
+drwxr-xr-x    1 schuh    UsersGrp         0 Jan 25 13:14 ..
+-rw-r--r--    1 schuh    UsersGrp        27 Jan 25 11:31 HEAD
+-rw-r--r--    1 schuh    UsersGrp       393 Jan 25 11:31 config
+-rw-r--r--    1 schuh    UsersGrp        73 Jan 25 11:27 description
+drwxr-xr-x    1 schuh    UsersGrp         0 Jan 25 11:27 hooks
+-rw-r--r--    1 schuh    UsersGrp      8222 Jan 25 13:14 index
+drwxr-xr-x    1 schuh    UsersGrp         0 Jan 25 11:27 info
+drwxr-xr-x    1 schuh    UsersGrp         0 Jan 25 11:27 logs
+drwxr-xr-x    1 schuh    UsersGrp         0 Jan 25 11:27 objects
+-rw-r--r--    1 schuh    UsersGrp       186 Jan 25 11:27 packed-refs
+drwxr-xr-x    1 schuh    UsersGrp         0 Jan 25 11:27 refs
 
 
 
