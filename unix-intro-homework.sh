@@ -258,12 +258,12 @@ rm -r fq_AB/
 ####         (but not their contents) when you are done. (Think `ls -d`).
 
 mkdir dir_{A,C,E,G,I}
-ls -d */
+ls -d *d
 
 ---------
 
-.Rproj.user/  bam/          dir_C/        dir_G/        fastq/        sam/
-.git/         dir_A/        dir_E/        dir_I/        metadata/     silly/
+
+dir_A  dir_C  dir_E  dir_G  dir_I
 
 
 #### Ex. 18: Using globbing, remove `dir_A`, `dir_C`, `dir_E`, `dir_G`, and `dir_I`,
@@ -294,16 +294,26 @@ A string in a file
 ####         `Whoa! No spaces, please!`. Use backslash escaping instead of quoting
 
 
-
+ echo 'Whoa! No spaces, please!' > bad\ directory\ name\ with\ spaces/bad\ file\ name\ with\ spaces
 
 #### Ex. 22: Catenate the contents of 
 ####         `bad directory name with spaces/bad file name with spaces` to stdout.
 
+cat bad\ directory\ name\ with\ spaces/bad\ file\ name\ with\ spaces
+
+---------
+
+Whoa! No spaces, please!
 
 
 #### Ex. 23: List the directories (just the names, not the contents (`-d`)) of
 ####         `bad directory name with spaces` and `nice_dir_name`.
 
+ls -d bad\ directory\ name\ with\ spaces/ nice_dir_name/
+
+-----
+
+bad directory name with spaces/  nice_dir_name/
 
 
 #### Ex. 24: Once you are convinced that you can list the directories
@@ -311,37 +321,57 @@ A string in a file
 ####         command line using the up arrow on your keyboard) and replace `ls` with
 ####         `rm -r` to remove them. BE CAREFUL with the rm command!
 
-
+rm -r bad\ directory\ name\ with\ spaces/ nice_dir_name/
 
 #### Ex. 25: Why is it a good idea to `ls` things before removing them?
 
+Then you can see what you are about remove before you actually do it.
 
 
 #### Ex. 26: If you had just typed `rm -r bad directory name with spaces` 
 ####         what would Unix have tried to remove? (No command to type here,
 ####         just answer the question).
 
-
+it would have tried to remove 5 different objects. One for each word after rm -r.
 
 #### Ex. 27: There are bam, sam, and fastq files, in the appropriately
 ####         named directories for sample `A05_S5`. Make a directory named `A05_S5`
 ####         and copy all those files into that new directory. List the directory
 ####         when you are done.
 
+mkdir A05_S5
+cp bam/* A05_S5/
+cp sam/* A05_S5/
+cp fastq/* A05_S5/
+ls -d A05_S5/
 
+-------
+
+A05_S5/
 
 #### Ex. 28: remove the directory `A05_S5` and its contents
 
-
+rm -r A05_S5/
 
 #### Ex. 29: Use `ls` to try to list the file `it_aint_here`
 
+ls it_aint_here
 
+------
+
+ls: it_aint_here: No such file or directory
 
 #### Ex. 30: Now, do the same thing but redirect _stderr_ into a file called 
 ####         `my_bad.txt`, and then catenate the contents of that file, and then remove it
 
 
+ls it_aint_here 2> my_bad.txt
+cat my_bad.txt
+rm my_bad.txt
+
+-------
+
+ls: it_aint_here: No such file or directory
 
 
 #### Ex. 31: The files in `fastq` are text files, but they are all gzipped.
