@@ -379,27 +379,64 @@ ls: it_aint_here: No such file or directory
 ####         `fastq/DPCh_plate1_C11_S35.R1.fq.gz`
 
 
+zcat fastq/DPCh_plate1_C11_S35.R1.fq.gz | head -8
+
+------
+
+@K00364:64:HTYYCBBXX:1:1101:1824:48192/1
+GTAGAATAATAGTGAATCAAATCAAATGTTATTTGTCACATGCGCTGAATACAACAGGTGTGGACCTTACAGTGAAATGCTTCCTTACAAGCCCTTAACCAACAATGCAGTTTTAAGAAAAATGAGTGTGAGATAAGTAAAAAATAGAAAA
++
+AAFFFJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJFJJJJJJJJJJJAJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJFJJJJJJJJJJJJ7JJJJJJFFFFJJJJJJ7A7AJJAFAJJJJJFJJJJ-<JFJ-FFFJJJ
+@K00364:64:HTYYCBBXX:1:1101:2869:22080/1
+TTAAAACACGGTATGATGCAAGCAGCACAACACATCAATAACAAAAATACAAGAATTAGGGTCAGAAATCCAGTAACCACCATACTAGTGTACTTACCAAACCAGGCTCCCAACCAAGAGAACAGTCCAGACTCCTCCACCCTCGCCATGG
++
+-AAFFJJJJJJJJJJJJFFJJJFJFJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJFFJJJ<JJJJJJFFFFJFFJJJJJJAFJJJJJJJJJJJJJJJJJJFAJJJJJJJJJJJJJJJJJJJFJJJFAJJJJJJJFJJJJJJJJFFJJ
 
 
 #### Ex. 32: Do the same to see the first 8 lines of `fastq/DPCh_plate1_C11_S35.R2.fq.gz`
 
+zcat fastq/DPCh_plate1_C11_S35.R2.fq.gz | head -8
 
+-------
+
+"@K00364:64:HTYYCBBXX:1:1101:1824:48192/2
+CACAAGGAACGACAGAGGGTAGTGCGTACGGCCCAGCACATCACTGGGACCAAGCATCCTGCAATCCAGGACCTCCATACCAGGCGGTGTCAGAGGAAGGCCCTAAAATTGTCAAAGACTCCAGCCACCCTAGTCATTAACTCTTCGCTCT
++
+A<-A-<-F<AJ-<---<<--<-<-7FFJ-77A<-<--7-<7-<-7<J<77A<--7-AAA7-AF-7FAF<-<FJ---7-77FJA7-77F7FFJ7F<--<--77)A7FA-A7-<---7<<F7-<-7<))7--)<)7<AF----7<<<<-)-7)
+@K00364:64:HTYYCBBXX:1:1101:2869:22080/2
+CTATGATCAACAGCGTTTTGTGATTTACCCCCGTGATGCACTCACTGGTATGTCTGAACAGCTTGAGGCCACATCTAGGGTTGCCAGACAGAATAGACTTGCTTTGGATATGCTTCTTGCCAGTCAGGGGGGTGTCTGTAAGATGTTCGGT
++
+AAAFAFJJJJJJJJJJ-FJJJJJJFJJJJFJJJJJJJJJJJJJFJFFJFFFFFFJFFJJJFJFAAA777AAJJJAA--A<-A<-JJA-<JFJJJ-7<-AAJJFJJJ<JJ<JAFFFF---7<<7777<)7<<-<777-<-7--<FJJ<F-<<"
 
 
 #### Ex. 33: What do you notice about the names of the two reads in each 
 ####         file (Lines 1 and 5, that start with a `@`)
 
-
+It is the identifier of the read, they are almost the same
 
 
 #### Ex. 34: Print the date, redirect it to a file called `now.txt`,
 ####         catenate that file to _stdout_ and then remove it
 
+date > now.txt
+cat now.txt
+rm now.txt
+
+-------
+
+Wed Jan 26 10:05:14 MST 2022
 
 
 #### Ex. 35: Count the number of lines/words/characters (using `wc`)
 ####         in the two SAM files in the `sam` directory
 
+wc sam/*
+
+---------
+
+    14219     45092    525422 sam/DPCh_plate1_A05_S5.sam
+    14150     43985    494127 sam/DPCh_plate1_A06_S6.sam
+    28369     89077   1019549 total
 
 
 #### Ex. 36: Note that gzcat will decompress all files you give itand send the 
@@ -408,7 +445,19 @@ ls: it_aint_here: No such file or directory
 ####         and also count up all the lines in the `R1` files in `fastq`. 
 ####         Note they should be the same.
 
+zcat fastq/*R1* | wc
 
+--------
+
+19364     19364   1678394
+
+--------
+
+zcat fastq/*R2* | wc
+
+--------
+
+19364     19364   1675972
 
 #### Ex. 37: Now, gzcat all the `R1` files in `fastq` and redirect that
 ####         to a file called `R1_all_via_gzcat.fq` in the top directory of the repo
