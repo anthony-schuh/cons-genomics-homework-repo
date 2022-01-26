@@ -462,7 +462,7 @@ zcat fastq/*R2* | wc
 #### Ex. 37: Now, gzcat all the `R1` files in `fastq` and redirect that
 ####         to a file called `R1_all_via_gzcat.fq` in the top directory of the repo
 
-
+zcat fastq/*R1* > R1_all_via_gzcat.fq
 
 #### Ex. 38: People are usually familiar with using `cat` to catenate text
 ####         files. It turns out that you can also catenate `gzip` compressed files. 
@@ -470,45 +470,65 @@ zcat fastq/*R2* | wc
 ####         Catenate all the gzipped `R1` files in `fastq` into a single (still gzipped)
 ####         file called `R1_all_via_cat.fq.gz`
 
-
+cat fastq/*R1* > R1_all_via_cat.fq.gz
 
 #### Ex. 39: Copy `R1_all_via_cat.fq.gz` to `copy_of_R1_all_via_cat.fq.gz`
 
 
+cp R1_all_via_cat.fq.gz copy_of_R1_all_via_cat.fq.gz
 
 
 #### Ex. 40: Now, decompress `R1_all_via_cat.fq.gz` into `R1_all_via_cat.fq`
 
-
+gunzip R1_all_via_cat.fq.gz
 
 
 #### Ex. 41: Compute the SHA1 hashes of `R1_all_via_cat.fq` and `R1_all_via_gzcat.fq`
 ####         to confirm they are identical
 
 
+sha1sum R1_all_via_cat.fq
+sha1sum R1_all_via_gzcat.fq
 
+--------
+
+d5b95bf950e8150c56aed90eea9febeb23ddd856  R1_all_via_cat.fq
+
+d5b95bf950e8150c56aed90eea9febeb23ddd856  R1_all_via_gzcat.fq
 
 #### Ex. 42: But now, gzip `R1_all_via_gzcat.fq` and compare the result to
 ####         `copy_of_R1_all_via_cat.fq.gz` by computing the SHA1 hash of each
 
-
+ sha1sum R1_all_via_gzcat.fq.gz
+ sha1sum copy_R1_all_via_cat.fq.gz
+ 
+ -----------
+ 
+ 0ede911435428c49a35d90264e2993c9619d2161  R1_all_via_gzcat.fq.gz
+ 93588c00857e42325bf64bb0ea5992307460737c  copy_R1_all_via_cat.fq.gz
 
 #### Ex. 43: using `du` with the `-h` (i.e. "human readable" option) print the
 ####         file sizes of `R1_all_via_cat.fq` and `copy_of_R1_all_via_cat.fq.gz`.
 
+du -h R1_all_via_cat.fq
+du -h copy_R1_all_via_cat.fq.gz
 
+-----------
+
+1.6M    R1_all_via_cat.fq
+420.0K  copy_R1_all_via_cat.fq.gz
 
 
 #### Ex. 44: By what factor (approximately) does the compression save storage
 ####         space on your disk?
 
-
+about a factor of 4 (3.8)
 
 
 #### Ex. 45: Remove all files starting with `R1_all` and `copy_of_R1`
 
-
-
+rm R1*
+rm copy_of_R1*
 
 #### Ex. 46: Now, print the file sizes (with `du -h`, again) of the files
 ####         in `bam` to the files in `sam`
